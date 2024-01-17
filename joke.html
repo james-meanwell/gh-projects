@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      p {
+        font-size: 48px;
+      }
+
+      .container {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      button {
+        margin-right: 1rem;
+        cursor: pointer;
+        background-color: white;
+        border: none;
+        padding: 1rem;
+      }
+
+      #fuck-off {
+        text-transform: capitalize;
+        font-style: italic;
+      }
+    </style>
+    <title>jk</title>
+  </head>
+  <body>
+    <div class="container">
+      <p id="knock">knock knock</p>
+      <div class="button-wrapper">
+        <button id="who">wHo'S tHeRe?</button
+        ><button id="fuck-off">Fuck off.</button>
+      </div>
+    </div>
+    <script>
+      const joke = {
+        container: document.querySelector(".container"),
+        fuckOff: document.querySelector("#fuck-off"),
+        who: document.querySelector("#who"),
+        knock: document.querySelector("#knock"),
+        buttonWrapper: document.querySelector(".button-wrapper"),
+
+        rudeSelection: function () {
+          const rudeText = document.createElement("p");
+          rudeText.textContent = "k.";
+          this.knock.remove();
+          this.buttonWrapper.remove();
+          this.container.appendChild(rudeText);
+          this.addRefreshButton();
+          console.log("That's incredibly rude.");
+        },
+
+        cornySelection: function () {
+          const cornyText = document.createElement("p");
+          cornyText.textContent = "A fuckin loser.";
+          this.knock.remove();
+          this.buttonWrapper.remove();
+          this.container.appendChild(cornyText);
+          this.addRefreshButton();
+          console.log("A fuckin loser.");
+        },
+
+        addRefreshButton: function () {
+          const refreshButton = document.createElement("button");
+          refreshButton.textContent = "refresh";
+          refreshButton.addEventListener("click", function () {
+            window.location.reload();
+          });
+          this.container.appendChild(refreshButton);
+        },
+
+        init: function () {
+          this.fuckOff.addEventListener("click", this.rudeSelection.bind(this));
+          this.who.addEventListener("click", this.cornySelection.bind(this));
+        },
+      };
+
+      joke.init();
+    </script>
+  </body>
+</html>
